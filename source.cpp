@@ -3,7 +3,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <vector>
 #include <chrono>
-#include "readMap.cpp"
+#include "readmap.cpp"
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
