@@ -4,8 +4,6 @@ Read and visualize [.osu file format](https://osu.ppy.sh/help/wiki/osu!_File_For
 ## Dependencies
 ```
 SDL2
-SDL2_image
-SDL2_ttf
 ```
 
 ## Build and Run
@@ -13,6 +11,6 @@ SDL2_ttf
 2. Edit `fileLocation` in `source.cpp` with .osu file location
 3. Compile and run:
 ```
-$ g++ source.cpp -w -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -o source
+$ g++ source.cpp -w -lSDL2main -lSDL2 -o source
 $ ./source
 ```

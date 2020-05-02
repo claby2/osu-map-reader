@@ -1,6 +1,4 @@
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
 #include <vector>
 #include <chrono>
 #include "readmap.cpp"
@@ -12,7 +10,6 @@ const int OBJECT_SIZE = 30;
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
-TTF_Font *gFont = NULL;
 
 void init() {
     SDL_Init(SDL_INIT_VIDEO);
@@ -20,19 +17,13 @@ void init() {
     gWindow = SDL_CreateWindow("osu! Map Reader", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
     SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
-    IMG_Init(IMG_INIT_PNG);
-    TTF_Init();
 }
 
 void close() {
-    TTF_CloseFont(gFont);
-    gFont = NULL;
     SDL_DestroyRenderer(gRenderer);
     SDL_DestroyWindow(gWindow);
     gWindow = NULL;
     gRenderer = NULL;
-    TTF_Quit();
-    IMG_Quit();
     SDL_Quit();
 }
 
@@ -63,7 +54,6 @@ int main(int argc, char* args[]) {
         SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
 
         if(currentIndex + 1 <= hitObjects.size()) {
-            std::cout << hitObjects[currentIndex + 1].time << " " << elapsedTime << "\n";
             if(hitObjects[currentIndex + 1].time <= elapsedTime) {
                 SDL_RenderClear(gRenderer);
                 hitObject object = hitObjects[currentIndex + 1];
